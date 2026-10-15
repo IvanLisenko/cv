@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>CV — Иван Лысенко</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    background: #e8eaed;
+    color: #1a1a2e;
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 20px auto;
+    background: #ffffff;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+  }
+
+  /* ============================================
+     ВЕРХНЯЯ ЧАСТЬ — 2 колонки
+     ============================================ */
+  .top-section {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+  }
+
+  .sidebar {
+    background: #1a1f2e;
+    color: #e8eef5;
+    padding: 32px 22px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .photo {
+    width: 200px;
+    height: 240px;
+    border-radius: 16px;
+    margin: 0 auto 22px;
+    background: #2a3038;
+    border: 3px solid #1d69e5;
+    box-shadow: 0 0 30px rgba(29, 105, 229, 0.4);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .sidebar-section { margin-bottom: 22px; }
+
+  .sidebar-title {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1d69e5;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #2a3038;
+    margin-bottom: 12px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: #c8d4e0;
+    word-break: break-word;
+  }
+
+  .contact-item .icon {
+    width: 16px;
+    text-align: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .tag {
+    background: #2a3038;
+    color: #a8b8c8;
+    font-size: 10px;
+    padding: 3px 9px;
+    border-radius: 12px;
+    border: 1px solid #3a4048;
+  }
+
+  .lang-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: #c8d4e0;
+  }
+
+  .lang-item strong { color: #e8eef5; font-weight: 600; }
+
+  .main-top {
+    padding: 32px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header {
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid #e8eaed;
+  }
+
+  .name {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: #0a0f1a;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .name .accent { color: #1d69e5; }
+
+  .role {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a5a6a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .section { margin-bottom: 18px; }
+
+  .section-title {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1d69e5;
+    margin-bottom: 9px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e8eaed;
+  }
+
+  .text {
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #2a3540;
+  }
+
+  .text p { margin-bottom: 6px; }
+
+  /* ============================================
+     НИЖНЯЯ ЧАСТЬ — на всю ширину
+     ============================================ */
+  .bottom-section {
+    padding: 32px 32px;
+    background: #ffffff;
+    border-top: 3px solid #1d69e5;
+  }
+
+  .bottom-title {
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #0a0f1a;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e8eaed;
+  }
+
+  .bottom-title .accent { color: #1d69e5; }
+
+  .exp-item {
+    margin-bottom: 28px;
+    padding-left: 20px;
+    border-left: 3px solid #1d69e5;
+    position: relative;
+    page-break-inside: avoid;
+  }
+
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 6px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #1d69e5;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px #1d69e5;
+  }
+
+  .exp-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0a0f1a;
+    margin-bottom: 4px;
+  }
+
+  .exp-meta {
+    font-size: 12px;
+    color: #6a7a8a;
+    margin-bottom: 8px;
+  }
+
+  .exp-desc {
+    font-size: 13px;
+    color: #3a4550;
+    line-height: 1.6;
+  }
+
+  .exp-desc ul {
+    padding-left: 18px;
+    margin-top: 6px;
+  }
+
+  .exp-desc li { margin-bottom: 4px; }
+
+  /* ===== СКРИНЫ ===== */
+  .screenshots {
+    display: grid;
+    gap: 14px;
+    margin-top: 14px;
+  }
+
+  .screenshots.cols-1 { grid-template-columns: 1fr; }
+  .screenshots.cols-2 { grid-template-columns: 1fr 1fr; }
+  .screenshots.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+  .screenshot {
+    position: relative;
+    cursor: zoom-in;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #d8dde3;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: #f5f7fa;
+    page-break-inside: avoid;
+  }
+
+  .screenshot:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(29, 105, 229, 0.35);
+    border-color: #1d69e5;
+  }
+
+  .screenshot img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ===== ЛАЙТБОКС ===== */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    cursor: zoom-out;
+    backdrop-filter: blur(6px);
+  }
+
+  .lightbox.active { display: flex; }
+
+  .lightbox img {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+    animation: zoomIn 0.25s ease-out;
+  }
+
+  @keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    color: #fff;
+    font-size: 36px;
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: background 0.2s;
+    line-height: 1;
+    font-family: Arial, sans-serif;
+  }
+
+  .lightbox-close:hover { background: rgba(255, 255, 255, 0.2); }
+
+  .footer {
+    padding: 20px 32px;
+    border-top: 1px solid #e8eaed;
+    font-size: 10px;
+    color: #8a9aaa;
+    text-align: center;
+  }
+
+  /* ============================================
+     ПЕЧАТЬ / PDF — все скрины по 1 в ряд
+     ============================================ */
+  @media print {
+    body { background: #fff; }
+
+    .page {
+      margin: 0;
+      box-shadow: none;
+      width: 210mm;
+    }
+
+    /* В PDF ВСЕГДА 1 колонка — скрин на всю ширину */
+    .screenshots,
+    .screenshots.cols-1,
+    .screenshots.cols-2,
+    .screenshots.cols-3 {
+      grid-template-columns: 1fr !important;
+      gap: 16px;
+    }
+
+    .screenshot {
+      cursor: default;
+      box-shadow: none;
+      border: 1px solid #ccc;
+      page-break-inside: avoid;
+    }
+
+    .screenshot:hover {
+      transform: none;
+      box-shadow: none;
+      border-color: #ccc;
+    }
+
+    .exp-item {
+      page-break-inside: avoid;
+    }
+
+    .lightbox { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ВЕРХНЯЯ ЧАСТЬ -->
+  <div class="top-section">
+
+    <!-- ЛЕВАЯ КОЛОНКА -->
+    <aside class="sidebar">
+
+      <div class="photo">
+        <img src="photo.jpg" alt="Иван Лысенко">
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-title">Контакты</div>
+
+        <div class="contact-item">
+          <span class="icon">✉</span>
+          <span>vanyalisenko1985@gmail.com</span>
+        </div>
+
+        <div class="contact-item">
+          <span class="icon">☎</span>
+          <span>+7 978 568-84-79</span>
+        </div>
+
+        <div class="contact-item">
+          <span class="icon">✈</span>
+          <span>@imperium1205</span>
+        </div>
+
+        <div class="contact-item">
+          <span class="icon">⌨</span>
+          <span>github.com/IvanLisenko</span>
+        </div>
+
+        <div class="contact-item">
+          <span class="icon">📍</span>
+          <span>Симферополь</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-title">Технологии</div>
+        <div class="tag-list">
+          <span class="tag">React</span>
+          <span class="tag">Vite</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Git</span>
+          <span class="tag">Illustrator</span>
+          <span class="tag">Figma</span>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-title">Языки</div>
+        <div class="lang-item">
+          <strong>Русский</strong>
+          <span>Native</span>
+        </div>
+        <div class="lang-item">
+          <strong>Английский</strong>
+          <span>A2 / B1</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ПРАВАЯ ВЕРХНЯЯ -->
+    <main class="main-top">
+
+      <header class="header">
+        <div class="name">Иван <span class="accent">Лысенко</span></div>
+        <div class="role">Frontend Developer</div>
+      </header>
+
+      <section class="section">
+        <div class="section-title">О себе</div>
+        <div class="text">
+          <p>
+            Меня зовут Иван, мне 20 лет. Я занимаюсь фронтенд-разработкой
+            и векторной графикой — мне нравится создавать интерфейсы,
+            в которых сочетаются логика и визуальная аккуратность.
+            В будущем хочу освоить анимации и 3D-моделирование, чтобы
+            интерфейсы не просто работали, а оживали и вызывали эмоции.
+          </p>
+          <p>
+            Люблю чистый код, понятные структуры и проекты, где нужно
+            решать нестандартные задачи. В работе ценю внимание к деталям
+            и открытость к новому. В свободное время играю на гитаре,
+            пою в душе (говорят, там отличная акустика) и очень люблю котиков.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">Как я пришёл в IT</div>
+        <div class="text">
+          <p>
+            Я рос у бабушки, и она категорически была против всяких гаджетов:
+            не давала много пользоваться телефоном, а компьютера у меня
+            вообще не было. Несмотря на это, в школе я больше всего преуспел
+            в математике, физике и информатике, а закончил её с золотой
+            медалью. Именно эти предметы и подтолкнули меня к программированию.
+          </p>
+          <p>
+            Так я поступил учиться на программную инженерию. Первое время
+            было тяжело: много теории, непонятные термины, бесконечные
+            ошибки в коде. Но постепенно я понял, что программирование —
+            это как конструктор, только для взрослых: собираешь из кусочков
+            логики что-то живое, что работает и приносит пользу.
+          </p>
+          <p>
+            С тех пор затянуло. Учился сам — через документацию, YouTube
+            и бесконечные «почему это не работает?». Постепенно пришёл
+            к фронтенду: там можно соединить логику с визуалом, что мне
+            и нравится больше всего. Сейчас продолжаю развиваться в этом
+            направлении и берусь за проекты, где нужно совместить
+            аккуратный интерфейс и продуманную логику.
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- НИЖНЯЯ ЧАСТЬ -->
+  <div class="bottom-section">
+
+    <h2 class="bottom-title">Опыт <span class="accent">и проекты</span></h2>
+
+    <!-- GALION -->
+    <div class="exp-item">
+      <div class="exp-title">Galion Web.РМК — Frontend Developer</div>
+      <div class="exp-meta">4 курс · 2026 — настоящее время</div>
+      <div class="exp-desc">
+        Разработка веб-версии кассы для розничного бизнеса. Проект
+        ориентирован на удобство работы кассира и скорость обслуживания
+        покупателей.
+        <ul>
+          <li>Разработка интерфейса на React + Vite</li>
+          <li>Интеграция с REST API, работа с системой аудита событий</li>
+          <li>Вёрстка, анимации, продумывание UX для кассира</li>
+          <li>Настройка Docker + Nginx для продакшена</li>
+          <li>Работа с терминалом оплаты и печатью чеков</li>
+          <li>Тестирование и доработка интерфейса по фидбеку</li>
+        </ul>
+      </div>
+      <div class="screenshots cols-3">
+        <div class="screenshot" onclick="openLightbox(this)">
+          <img src="screens/galion-1.jpg" alt="Galion Web.РМК — 1">
+        </div>
+        <div class="screenshot" onclick="openLightbox(this)">
+          <img src="screens/galion-2.jpg" alt="Galion Web.РМК — 2">
+        </div>
+        <div class="screenshot" onclick="openLightbox(this)">
+          <img src="screens/galion-3.jpg" alt="Galion Web.РМК — 3">
+        </div>
+      </div>
+    </div>
+
+    <!-- APPLICANT MARKET -->
+    <div class="exp-item">
+      <div class="exp-title">Applicant Market — Frontend Developer</div>
+      <div class="exp-meta">4 курс · хакатон</div>
+      <div class="exp-desc">
+        Проект для хакатона — маркетплейс для соискателей и работодателей.
+        Задача — сделать удобный и быстрый интерфейс для поиска вакансий
+        и размещения резюме.
+        <ul>
+          <li>Разработка фронтенд-части приложения</li>
+          <li>Взаимодействие с API и отображение данных</li>
+          <li>Разработка интерфейса поиска и фильтрации</li>
+          <li>Работа в команде в сжатые сроки</li>
+          <li>Презентация проекта по итогам хакатона</li>
+        </ul>
+      </div>
+      <div class="screenshots cols-3">
+        <div class="screenshot" onclick="openLightbox(this)">
+          <img src="screens/applicant-1.jpg" alt="Applicant Market — 1">
+        </div>
+        <div class="screenshot" onclick="openLightbox(this)">
+          <img src="screens/applicant-2.jpg" alt="Applicant Market — 2">
+        </div>
+        <div class="screenshot" onclick="openLightbox(this)">
+          <img src="screens/applicant-3.jpg" alt="Applicant Market — 3">
+        </div>
+      </div>
+    </div>
+
+    <!-- RESUME CONVERTER -->
+    <div class="exp-item">
+      <div class="exp-title">Resume Converter — Frontend Developer</div>
+      <div class="exp-meta">3 курс · учебный проект</div>
+      <div class="exp-desc">
+        Конвертер резюме для компании Трайв Технолоджис. Сервис
+        переводит резюме из формата ТРАЙВ .docx в партнёрские шаблоны
+        с сохранением конфиденциальности данных.
+        <ul>
+          <li>Разработка фронтенд-части: интерфейс и логика работы</li>
+          <li>Взаимодействие с backend-API</li>
+          <li>Отображение и редактирование данных резюме</li>
+          <li>Работа с загрузкой и выгрузкой .docx-файлов</li>
+          <li>Продумывание UX для рекрутеров</li>
+        </ul>
+      </div>
+      <div class="screenshots cols-2">
+        <div class="screenshot" onclick="openLightbox(this)">
+          <img src="screens/resume-1.jpg" alt="Resume Converter — 1">
+        </div>
+        <div class="screenshot" onclick="openLightbox(this)">
+          <img src="screens/resume-2.jpg" alt="Resume Converter — 2">
+        </div>
+      </div>
+    </div>
+
+    <!-- MEETING PLANNER -->
+    <div class="exp-item">
+      <div class="exp-title">Meeting Planner — Frontend Developer</div>
+      <div class="exp-meta">3 курс · учебный проект</div>
+      <div class="exp-desc">
+        Планировщик встреч — веб-приложение для организации
+        и синхронизации встреч между пользователями. Отвечал
+        за фронтенд-часть проекта.
+        <ul>
+          <li>Разработка интерфейса для создания и управления встречами</li>
+          <li>Календарь, напоминания, синхронизация данных</li>
+          <li>Вёрстка и адаптивность под разные экраны</li>
+        </ul>
+      </div>
+      <div class="screenshots cols-1">
+        <div class="screenshot" onclick="openLightbox(this)">
+          <img src="screens/meeting-1.jpg" alt="Meeting Planner">
+        </div>
+      </div>
+    </div>
+
+    <!-- PUCKOFF -->
+    <div class="exp-item">
+      <div class="exp-title">PuckOff — браузерная игра</div>
+      <div class="exp-meta">2 курс · учебный проект</div>
+      <div class="exp-desc">
+        Аркадная браузерная игра на движке Phaser. Разработка игровой
+        механики, физики и визуальной части.
+        <ul>
+          <li>Реализация игровой логики и физики</li>
+          <li>Работа со спрайтами и анимациями</li>
+          <li>Продумывание визуального стиля игры</li>
+        </ul>
+      </div>
+      <div class="screenshots cols-1">
+        <div class="screenshot" onclick="openLightbox(this)">
+          <img src="screens/puckoff-1.jpg" alt="PuckOff">
+        </div>
+      </div>
+    </div>
+
+    <!-- CFUV SCHEDULING -->
+    <div class="exp-item">
+      <div class="exp-title">CFUV Scheduling — Backend Developer</div>
+      <div class="exp-meta">1 курс · учебный проект</div>
+      <div class="exp-desc">
+        Приложение для планирования расписания в вузе. Отвечал
+        за backend-часть проекта.
+        <ul>
+          <li>Логика пар, групп и преподавателей</li>
+          <li>Уведомления и комментарии</li>
+          <li>Работа с базой данных</li>
+          <li>Разработка API для фронтенда</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ОБРАЗОВАНИЕ -->
+    <div class="exp-item">
+      <div class="exp-title">Образование</div>
+      <div class="exp-desc">
+        <strong>КФУ им. В. И. Вернадского</strong> — Программная инженерия · 4 курс.
+        Углублённо изучаю веб-разработку, базы данных, архитектуру
+        приложений и проектирование интерфейсов. Активно участвую
+        в учебных проектах и хакатонах.
+      </div>
+    </div>
+
+    <!-- ПЛАНЫ -->
+    <div class="exp-item">
+      <div class="exp-title">Планы</div>
+      <div class="exp-desc">
+        Хочу развивать свои компетенции, получать новый опыт
+        и знакомства, зарабатывать. В планах — углубиться
+        в TypeScript, анимации и 3D, а также попробовать себя
+        в fullstack-разработке. И когда-нибудь сыграть
+        «From the Inside» на гитаре целиком — без ошибок.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    CV · Иван Лысенко · 2026
+  </div>
+
+</div>
+
+<!-- ЛАЙТБОКС -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox(event)">✕</span>
+  <img id="lightbox-img" src="" alt="Просмотр">
+</div>
+
+<script>
+  function openLightbox(el) {
+    const img = el.querySelector('img');
+    if (!img) return;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(e) {
+    if (e) e.stopPropagation();
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+</body>
+</html>
